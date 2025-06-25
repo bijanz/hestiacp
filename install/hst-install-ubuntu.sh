@@ -831,12 +831,12 @@ if [ "$apache" = 'yes' ] && [ "$release" != '24.04' ]; then
 	echo "deb http://ppa.launchpad.net/ondrej/apache2/ubuntu $codename main" > $apt/apache2.list
 fi
 
-# Installing MariaDB repo
 if [ "$mysql" = 'yes' ]; then
-	echo "[ * ] MariaDB $mariadb_v"
-	echo "deb [arch=$ARCH signed-by=/usr/share/keyrings/mariadb-keyring.gpg] https://dlm.mariadb.com/repo/mariadb-server/$mariadb_v/repo/$VERSION $codename main" > $apt/mariadb.list
-	curl -s https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor | tee /usr/share/keyrings/mariadb-keyring.gpg > /dev/null 2>&1
+    echo "[ * ] MariaDB $mariadb_v"
+    echo "deb [arch=$ARCH signed-by=/usr/share/keyrings/mariadb-keyring.gpg] https://mirror.mva-n.net/mariadb/repo/$mariadb_v/ubuntu $codename main" > $apt/mariadb.list
+    curl -s https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor | tee /usr/share/keyrings/mariadb-keyring.gpg > /dev/null 2>&1
 fi
+
 
 # Installing HestiaCP repo
 echo "[ * ] Hestia Control Panel"
